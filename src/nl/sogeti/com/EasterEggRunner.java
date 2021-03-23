@@ -5,6 +5,8 @@ import nl.sogeti.logo.SogetiLogoDrawer;
 public class EasterEggRunner {
 
     public static void main(String[] args) {
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
         int phase = 0;
 
         while (true) {
@@ -14,18 +16,14 @@ public class EasterEggRunner {
             // Sorry, needed to comment this to make the animation smoother
             // new SogetiLogoDrawer().printSogetiLogo();
 
-            try {
-                Thread.sleep(500);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-
             // For the star band, 3 star (one set) is 12 steps long.
             // Therefore, there are 12 phases
             phase = (phase + 1) % 12;
 
-            System.out.print("\033[H\033[2J");
-            System.out.flush();
+            char escCode = 0x1B;
+            int row = 0;
+            int column = 0;
+            System.out.print(String.format("%c[%d;%df", escCode, row, column));
         }
     }
 

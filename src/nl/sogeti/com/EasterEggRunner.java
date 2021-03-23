@@ -16,6 +16,11 @@ public class EasterEggRunner {
             // Sorry, needed to comment this to make the animation smoother
             // new SogetiLogoDrawer().printSogetiLogo();
 
+            try {
+                Thread.sleep(100);
+            } catch (Exception e) {
+            }
+
             // For the star band, 3 star (one set) is 12 steps long.
             // Therefore, there are 12 phases
             phase = (phase + 1) % 12;
